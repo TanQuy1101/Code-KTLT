@@ -27,7 +27,7 @@ void showMenu()
 }
 void process()
 {
-	int luaChon;  ///
+	int luaChon;  
 	ArrPtr* A = NULL;
 	int M = 0, N = 0, kq = 0;
 	int K = 0;
