@@ -388,7 +388,7 @@ void sort_DecreaseGradually(ItemType*& a, int m) // Sắp Xếp Mảng Giảm
 	}
 }
 ////===================================================================================
-void sort_EvenIncrease_OddDecrease(ArrPtr*& a, int m, int n) // Sắp Xếp Ma Trận
+void sort_EvenIncrease_OddDecrease_Line(ArrPtr*& a, int m, int n) // Sắp Xếp Ma Trận
 {
 	for (int i = 0; i < m; i++)
 	{
@@ -426,7 +426,8 @@ void sort_ZicZac(ArrPtr* a, int m, int n) // Sắp Xếp Ma Trận
 			k++;
 		}
 	}
-	sort_EvenIncrease_OddDecrease(a, m, n); // Ghi Trả Giá Trị Mảng b cho Ma Trận a Mới Sắp Xếp Theo Ý Đề Bài
+	sort_EvenIncrease_OddDecrease_Line(a, m, n); 
+	// Ghi Trả Giá Trị Mảng b cho Ma Trận a Mới Sắp Xếp Theo Ý Đề Bài
 }
 //===================================================================================
 

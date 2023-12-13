@@ -124,7 +124,7 @@ void process()
 			printf("Noi Dung Cua Ma Tran Vua Load Tu File La:\n");
 			xuatMang2C_SoNguyen(A, M, N);
 
-			sort_EvenIncrease_OddDecrease(A, M, N);
+			sort_EvenIncrease_OddDecrease_Line(A, M, N);
 			printf("Noi Dung Cua Ma Tran Sau Khi Sap Xep Dong Chan Tang, Dong Le Giam La:\n");
 			xuatMang2C_SoNguyen(A, M, N);
 			break;

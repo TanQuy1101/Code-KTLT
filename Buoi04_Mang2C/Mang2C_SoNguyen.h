@@ -52,7 +52,7 @@ void listed_Column_Odd(ArrPtr* a, int m, int n);
 void hoanVi(ItemType& x, ItemType& y);
 void sort_IncreaseGradually(ItemType*& a, int m);
 void sort_DecreaseGradually(ItemType*& a, int m);
-void sort_EvenIncrease_OddDecrease(ArrPtr*& a, int m, int n);
+void sort_EvenIncrease_OddDecrease_Line(ArrPtr*& a, int m, int n);
 void sort_ZicZac(ArrPtr* a, int m, int n);
 
 #endif 
