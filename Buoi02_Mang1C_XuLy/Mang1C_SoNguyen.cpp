@@ -433,7 +433,7 @@ void find_All_EvenMax(ItemType* a, int n) // Mảng Có Nhiều Hơn Một Phầ
 	}
 }
 ////===================================================================================
-int check_SoChinhPhuong(int n)
+void check_SoChinhPhuong(int n)
 {
 	int sqr = sqrt(n);
 	if (sqr*sqr == n)
