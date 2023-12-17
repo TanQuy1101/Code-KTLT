@@ -55,7 +55,7 @@ int Combination_nCk(int n, int k)
 		return Combination_nCk(n - 1, k) + Combination_nCk(n - 1, k - 1);
 }
 ////===================================================================================
-int UCLN(int a, int b) // Cach Nhap a,b
+int UCLN(int a, int b) 
 {
 	if (b == 0 || b == a)
 		return a;

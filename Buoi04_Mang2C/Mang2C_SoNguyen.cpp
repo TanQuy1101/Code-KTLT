@@ -305,7 +305,7 @@ void hoanVi(ItemType& x, ItemType& y)
 	y = tmp;
 }
 //===================================================================================
-void sortIncrease_LineK(ArrPtr* a, int m, int n, int k)
+void sortIncrease_LineK(ArrPtr* a, int n, int k)
 {
 	for (int i = 0; i < n - 1; i++)
 	{
@@ -319,11 +319,11 @@ void sortIncrease_LineK(ArrPtr* a, int m, int n, int k)
 	}
 }
 //===================================================================================
-void sortIncrease_EachLine(ArrPtr* a, int m, int n) 
+void sortIncrease_EachLine(ArrPtr* a, int m, int n)
 {
 	for (int i = 0; i < m; i++)
 	{
-		sortIncrease_LineK(a, m, n, i);
+		sortIncrease_LineK(a, n, i);
 	}
 	printf("Noi Dung Cua Ma Tran Sau Khi Sap Xep Tang Dan Tung Dong La:\n");
 	xuatMang2C_SoNguyen(a, m, n);
@@ -426,7 +426,7 @@ void sort_ZicZac(ArrPtr* a, int m, int n) // Sắp Xếp Ma Trận
 			k++;
 		}
 	}
-	sort_EvenIncrease_OddDecrease_Line(a, m, n); 
+	sort_EvenIncrease_OddDecrease_Line(a, m, n);
 	// Ghi Trả Giá Trị Mảng b cho Ma Trận a Mới Sắp Xếp Theo Ý Đề Bài
 }
 //===================================================================================
