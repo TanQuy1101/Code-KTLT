@@ -120,9 +120,10 @@ int get_FirstNumber(int n)
 	return n;
 }
 ////===================================================================================
-int sum_Element_OddFirstNumber(ArrPtr* a, int m, int n)
+void sum_Element_OddFirstNumber(ArrPtr* a, int m, int n)
 {
 	int sum = 0;
+	int count = 0;
 	for (int i = 0; i < m; i++)
 	{
 		for (int j = 0; j < n; j++)
@@ -130,10 +131,14 @@ int sum_Element_OddFirstNumber(ArrPtr* a, int m, int n)
 			if (get_FirstNumber(a[i][j]) % 2 != 0)
 			{
 				sum += a[i][j];
+				count++;
 			}
 		}
 	}
-	return sum;
+	if (count == 0)
+	{
+		printf("Mang Ko Co Phan Tu Voi Chu So Dau Le!");
+	}
 }
 ////===================================================================================
 int check_SoHoanThien(int n)

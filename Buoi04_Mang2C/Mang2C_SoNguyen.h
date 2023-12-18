@@ -25,7 +25,7 @@ void taoMang2C_SoNguyen(ArrPtr*& a, int& m, int& n);
 void docMang2C_SoNguyen(const char* FileName, ArrPtr*& a, int& m, int& n);
 void xuatMang2C_SoNguyen(ArrPtr* a, int m, int n);
 
-int sum_Element_OddFirstNumber(ArrPtr* a, int m, int n);
+void sum_Element_OddFirstNumber(ArrPtr* a, int m, int n);
 void listed_SoHoanThien(ArrPtr* a, int m, int n);
 int sum_ElementBiggerThan_absNextElement(ArrPtr* a, int m, int n);
 int sum_LineK_Array2D(ArrPtr* a, int m, int n, int k);
@@ -55,5 +55,5 @@ void sort_DecreaseGradually(ItemType*& a, int m);
 void sort_EvenIncrease_OddDecrease_Line(ArrPtr*& a, int m, int n);
 void sort_ZicZac(ArrPtr* a, int m, int n);
 
-#endif 
+#endif
 

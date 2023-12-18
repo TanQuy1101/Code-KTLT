@@ -23,6 +23,8 @@ void taoMang2C_SoNguyen(ArrPtr*& a, int& m, int& n);
 void docMang2C_SoNguyen(const char* FileName, ArrPtr*& a, int& m, int& n);
 void xuatMang2C_SoNguyen(ArrPtr* a, int m, int n);
 
+void hoanVi(ItemType& x, ItemType& y);
+
 #endif 
 
 
