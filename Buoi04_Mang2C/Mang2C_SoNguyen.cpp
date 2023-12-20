@@ -135,6 +135,7 @@ void sum_Element_OddFirstNumber(ArrPtr* a, int m, int n)
 			}
 		}
 	}
+	printf("Tong Cac Phan Tu Co Chu So Dau Le La: %d\n", sum);
 	if (count == 0)
 	{
 		printf("Mang Ko Co Phan Tu Voi Chu So Dau Le!");
@@ -158,6 +159,7 @@ int check_SoHoanThien(int n)
 ////===================================================================================
 void listed_SoHoanThien(ArrPtr* a, int m, int n)
 {
+	int count = 0;
 	for (int i = 0; i < m; i++)
 	{
 		for (int j = 0; j < n; j++)
@@ -165,8 +167,13 @@ void listed_SoHoanThien(ArrPtr* a, int m, int n)
 			if (check_SoHoanThien(a[i][j]))
 			{
 				printf("%5d ", a[i][j]);
+				count++;
 			}
 		}
+	}
+	if (count == 0)
+	{
+		printf("Ma Tran Khong Co So Hoan Thien!");
 	}
 }
 ////===================================================================================
@@ -435,8 +442,116 @@ void sort_ZicZac(ArrPtr* a, int m, int n) // Sắp Xếp Ma Trận
 	// Ghi Trả Giá Trị Mảng b cho Ma Trận a Mới Sắp Xếp Theo Ý Đề Bài
 }
 //===================================================================================
+void sort_ColumnC(ArrPtr* a, int m, int c)
+{ // Mặc Dù Hàm Này Là Sắp Xếp Trên Array1D Nhưng input của 'a' Phải Ở Dạng ArrPtr* Vì Ở if Truyền Vào 2 Giá Trị
+	for (int i = 0; i < m - 1; i++)
+	{
+		for (int j = i + 1; j < m; j++) // Hai Vòng For Là Loop Của Array1D
+		{
+			if (a[i][c] < a[i + 1][c])
+			{
+				hoanVi(a[i][c], a[i + 1][c]);
+			}
+		}
+	}
+}
+//===================================================================================
+void sort_ColumnC_DecreaseGradually(ArrPtr* a, int m, int n, int c)
+{
+	for (int j = 0; j < n; j++)
+	{
+		sort_ColumnC(a, m, c);
+	}
+	printf("Ma Tran Sau Khi Sap Xep Giam Dan Dong C La:\n");
+	xuatMang2C_SoNguyen(a, m, n);
+}
+//===================================================================================
+// Liệt Kê Cột Có Chứa Số Chẵn
+int check_ColumnK_Own_Even(ArrPtr* a, int m, int k)
+{
+	for (int i = 0; i < m; i++)
+	{
+		if (a[i][k] % 2 == 0)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+//===================================================================================
+void listed_Column_Own_Even(ArrPtr* a, int m, int n)
+{
+	printf("Cac Cot Chua So Chan La: ");
+	int count = 0;
+	for (int j = 0; j < n; j++)
+	{
+		if (check_ColumnK_Own_Even(a, m, j))
+		{
+			printf("%d\t", j);
+			count++;
+		}
+	}
+	if (!count)
+	{
+		printf("Khong Co Cot Nao Co Chua So Chan!");
+	}
+}
+//===================================================================================
+int Sum_ColumnK(ArrPtr* a, int m, int k)
+{
+	int sum = 0;
+	for (int i = 0; i < m; i++)
+	{
+		sum += a[i][k];
+	}
+	return sum;
+}
+//===================================================================================
+void listed_Column_MinSum(ArrPtr* a, int m, int n) 
+{
+	int MinSum = Sum_ColumnK(a, m, 0);
 
+	int kq = 0;
+	for (int j = 1; j < n; j++)
+	{
+		kq = Sum_ColumnK(a, m, j);
 
+		if (MinSum > kq)
+		{
+			MinSum = kq;
+		}
+	}
+	for (int j = 0; j < n; j++)
+	{
+		kq = Sum_ColumnK(a, m, j);
+
+		if (MinSum == kq)
+		{
+			printf("Cot Co Tong Nho Nhat La Cot Thu %d\n", j);
+		}
+	}
+}
+//===================================================================================
+void listed_MinElement_RowK(ArrPtr* a, int n, int k)
+{
+	printf("Phan Tu Nho Nhat Tren Dong K La:\n");
+	int Min = a[k][0];
+	for (int j = 1; j < n; j++)
+	{
+		if (Min > a[k][j])
+		{
+			Min = a[k][j];
+		}
+	}
+	for (int j = 0; j < n; j++)
+	{
+		if (a[k][j] == Min)
+		{
+			printf("Gia Tri Nho Nhat La %d Xuat Hien Tai Dong %d Cot %d\n", Min, k, j);
+		}
+	}
+}
+//===================================================================================
 
 
 

@@ -10,28 +10,39 @@ void showMenu()
 	printf("\n3. Tao Mang2C So Nguyen                                   *");
 	printf("\n4. Load Mang2C So Nguyen                                  *");
 	printf("\n5. Xem Mang2C So Nguyen                                   *");
-	printf("\n6. Tong Phan Tu Co Chu So Dau Le                          *");
-	printf("\n7. Liet Ke So Hoan Thien                                  *");
-	printf("\n8. Tong Cac Phan Tu Lon Hon ABS Cua Phan Tu Lien Sau      *");
-	printf("\n9. Tong Phan Tu Tren Dong K Cua Ma Tran                   *");
-	printf("\n10. Dem Tan Suat Xuat Hien Cua X                          *");
+	printf("\n**************************TINH TONG************************");
+	printf("\n6.  Tong Phan Tu Co Chu So Dau Le                         *");
+	printf("\n8.  Tong Cac Phan Tu Lon Hon ABS Cua Phan Tu Lien Sau     *");
+	printf("\n9.  Tong Phan Tu Tren Dong K Cua Ma Tran                  *");
 	printf("\n11. Tong Cac Phan Tu Nam Tren Bien Cua Ma Tran            *");
+	printf("\n19. Tong Cot K                                            *");
+	printf("\n**************************LIET KE**************************");
+	printf("\n7.  Liet Ke So Hoan Thien                                 *");
 	printf("\n12. Liet Ke Phan Tu Yen Ngua                              *");
-	printf("\n13. Sap Xep Tang Dan Tung Dong                            *");
+	printf("\n18. Liet Ke Cac Cot Chua So Chan                          *");
 	printf("\n14. Liet Ke Cac Cot Chua So Le                            *");
+	printf("\n20. Liet Ke Cot Co Tong Nho Nhat Trong Ma Tran            *");
+	printf("\n21. Liet Ke Phan Tu Nho Nhat Tren Dong K                  *");
+	printf("\n**************************SAP XEP**************************");
+	printf("\n13. Sap Xep Tang Dan Tung Dong                            *");
 	printf("\n15. Sap Xep Zic Zac (Tang Tu Trai -> Phai, Tren -> Duoi   *");
 	printf("\n16. Sap Xep Ma Tran Dong Chan Tang, Dong Le Giam          *");
+	printf("\n17. Sap Xep Giam Dan Dong K                               *");
+	printf("\n***********************************************************");
+	printf("\n10. Dem Tan Suat Xuat Hien Cua X                          *");
 	printf("\n0. Thoat Chuong Trinh                                     *");
 	printf("\n***********************************************************");
 	printf("\n***********************************************************");
 }
 void process()
 {
-	int luaChon;  
+	int luaChon;
 	ArrPtr* A = NULL;
 	int M = 0, N = 0, kq = 0;
 	int K = 0;
 	int X;
+	int c = 0;
+	int k = 0;
 	const char* inFileName = "input_Array2D_int.txt";
 	const char* inFileName2 = "input_Array2D_PhanTuYenNgua.txt";
 	const char* inFileName3 = "input_Array2D_ZicZac.txt";
@@ -68,8 +79,7 @@ void process()
 			xuatMang2C_SoNguyen(A, M, N);
 			break;
 		case 6:
-			kq = sum_Element_OddFirstNumber(A, M, N);
-			printf("Tong Cac Phan Tu Co Chu So Dau Le La: %d ", kq);
+			sum_Element_OddFirstNumber(A, M, N);
 			break;
 		case 7:
 			printf("Cac So Hoan Thien Trong Ma Tran La: ");
@@ -127,6 +137,29 @@ void process()
 			sort_EvenIncrease_OddDecrease_Line(A, M, N);
 			printf("Noi Dung Cua Ma Tran Sau Khi Sap Xep Dong Chan Tang, Dong Le Giam La:\n");
 			xuatMang2C_SoNguyen(A, M, N);
+			break;
+		case 17:
+			printf("Nhap Dong Muon Sap Xep Giam Dan: ");
+			scanf("%d", &c);
+			sort_ColumnC_DecreaseGradually(A, M, N, c);
+			break;
+		case 18:
+			listed_Column_Own_Even(A, M, N);
+			break;
+		case 19:
+			printf("Nhap Cot K Muon Tinh Tong: ");
+			scanf("%d", &k);
+
+			kq = Sum_ColumnK(A, M, k);
+			printf("Tong Cot K = %d", kq);
+			break;
+		case 20:
+			listed_Column_MinSum(A, M, N);
+			break;
+		case 21:
+			printf("Nhap Dong K Muon Tim Phan Tu Min: ");
+			scanf("%d",&K);
+			listed_MinElement_RowK(A,N,K);
 			break;
 		}
 	} while (luaChon != 0);

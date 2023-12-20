@@ -55,5 +55,13 @@ void sort_DecreaseGradually(ItemType*& a, int m);
 void sort_EvenIncrease_OddDecrease_Line(ArrPtr*& a, int m, int n);
 void sort_ZicZac(ArrPtr* a, int m, int n);
 
+void sort_ColumnC(ArrPtr* a, int m, int c);
+void sort_ColumnC_DecreaseGradually(ArrPtr* a, int m, int n, int c);
+void listed_Column_Own_Even(ArrPtr* a, int m, int n);
+
+int Sum_ColumnK(ArrPtr* a, int m, int k);
+void listed_Column_MinSum(ArrPtr* a, int m, int n);
+void listed_MinElement_RowK(ArrPtr* a, int n, int k);
+
 #endif
 
