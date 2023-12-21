@@ -2,6 +2,14 @@
 #include <conio.h>
 #include <string.h>
 
+////===================================================================================
+void fixScanf()
+{
+	char c;
+	while ((c = getchar()) != '\n' && c != EOF);
+}
+////===================================================================================
+
 // Bài 1. Chữ Đầu Thành Chữ Hoa, Còn Lại Thành Chữ Thường
 void Alter_Character(char* s)
 {
@@ -35,13 +43,13 @@ void Alter_Character(char* s)
 int delete_Site(char* s, int site)
 {
 	int n = strlen(s);
-	if (site < 0 || site > n)  
+	if (site < 0 || site > n)
 		return 0;
 	for (int i = site; i < n; i++)
 	{
-		s[i] = s[i + 1];  // Dòng Này Ko Hiểu
+		s[i] = s[i + 1];
 	}
-	s[n - 1] == '\0'; // Dòng Này Ko Hiểu
+	s[n - 1] == '\0';
 }
 //==============================================================================================
 void delete_Space(char* s)
@@ -64,12 +72,12 @@ void delete_Space(char* s)
 	//TH3: Xóa Space Ở Cuối
 	if (s[n - 1] == ' ')
 	{
-		delete_Site(s, n-1);
+		delete_Site(s, n - 1);
 	}
 }
 
 // Bài 3. Đếm Số Lần Xuất Hiện Của Kí Tự Trong Chuỗi
-int count_SoTu(char* s, char c)
+int count_SoTu(char* s, char c) // %s : Chuỗi      %c : Kí Tự
 {
 	if (s == NULL)
 		return 0;
@@ -83,56 +91,82 @@ int count_SoTu(char* s, char c)
 			count++;
 		}
 	}
-	if (count == 0)
-	{
-		// %s : Chuỗi      %c : Kí Tự
-		printf("\nKhong Tim Thay Ki Tu '%c' Trong Chuoi %s",c,s);
-	}
-	else
-	{
-		printf("\nSo Lan Xuat Hien Ki Tu '%c' Trong Chuoi La: %d", c,count);
-	}
+	printf("\nSo Lan Xuat Hien Cua Ki Tu '%c' Trong Chuoi La: %d", c, count);
+	if (!count)
+		printf("\nKhong Tim Thay Ki Tu '%c' Trong Chuoi", c);
 }
 
 // Bài 4. Đếm Số Khoảng Trắng Trong Chuỗi
-int count_SoTu(char* s)
+void count_Space(char* s)
 {
 	if (s == NULL)
-		return 0;
+		return;
 	int count = 0;
 	int n = strlen(s);
 	for (int i = 0; i < n; i++)
 	{
-		if (s[i] == ' ' || s[i + 1] == '\0') 
+		if (s[i] == ' ' || s[i + 1] == '\0')
 		{
 			count++;
 		}
 	}
-	return count;
+	printf("\nSo Khoang Trang Trong Chuoi Vua Nhap La: %d", count);
+	if (!count)
+		printf("Chuoi Khong Co Khoang Trang!");
 }
-
-void main()
+//==============================================================================================
+void showMenu()
+{
+	printf("\n***********************************************************");
+	printf("\n*********************      MENU   *************************");
+	printf("\n***********************************************************");
+	printf("\n1. Chuyen Chu Dau Thanh Chu Hoa, Con Lai Thanh Chu Thuong *");
+	printf("\n2. Xoa Khoang Trang Trong Chuoi                           *");
+	printf("\n3. Dem So Lan Xuat Hien Cua Ki Tu Trong Chuoi             *");
+	printf("\n4. Dem So Khoang Trang Trong Chuoi                        *");
+	printf("\n0. Thoat Chuong Trinh                                     *");
+	printf("\n***********************************************************");
+	printf("\n***********************************************************");
+}
+//==============================================================================================
+void process()
 {
 	char s[50];
-	char c;
+	char c = 0;
 	printf("Nhap Noi Dung Cho Chuoi: ");
 	gets_s(s);
 	printf("\nNoi Dung Cua Chuoi Vua Nhap La: ");
 	puts(s);
-
-	/*Alter_Character(s);
-	printf("\nNoi Dung Cua Chuoi Sau Khi Thay Doi Hoa Thuong La: %s ",s);*/
-
-	/*delete_Space(s);
-	printf("\nChuoi Sau Khi Xoa Space La: %s ",s);*/
-
-	/*printf("\nNhap Ki Tu Muon Tim Kiem Trong Chuoi: ");
-	scanf_s("%c", &c);
-	count_SoTu(s, c);*/
-
-	/*int count = count_SoTu(s);
-	printf("\nSo Ki Tu Trong Chuoi Vua Nhap La: %d",count);*/
-	
-
-	printf("\n");
+	int luaChon;
+	showMenu();
+	do
+	{
+		printf("\nHay Nhap Lua Chon Chuc Nang: ");
+		scanf("%d", &luaChon);
+		fixScanf();
+		switch (luaChon)
+		{
+		case 1:
+			Alter_Character(s);
+			printf("\nNoi Dung Cua Chuoi Sau Khi Thay Doi Hoa Thuong La: %s ", s);
+			break;
+		case 2:
+			delete_Space(s);
+			printf("\nChuoi Sau Khi Xoa Space La: %s ", s);
+			break;
+		case 3:
+			printf("\nNhap Ki Tu Muon Tim Kiem Trong Chuoi: ");
+			scanf("%c", &c);
+			count_SoTu(s, c);
+			break;
+		case 4:
+			count_Space(s);
+			break;
+		}
+	} while (luaChon != 0);
+}
+//==============================================================================================
+void main()
+{
+	process();
 }
