@@ -317,7 +317,7 @@ void hoanVi(ItemType& x, ItemType& y)
 	y = tmp;
 }
 //===================================================================================
-void sortIncrease_LineK(ArrPtr* a, int n, int k)
+void sortIncrease_LineK(ArrPtr* a, int k, int n)
 {
 	for (int i = 0; i < n - 1; i++)
 	{
@@ -335,13 +335,13 @@ void sortIncrease_EachLine(ArrPtr* a, int m, int n)
 {
 	for (int i = 0; i < m; i++)
 	{
-		sortIncrease_LineK(a, n, i);
+		sortIncrease_LineK(a, i, n);
 	}
 	printf("Noi Dung Cua Ma Tran Sau Khi Sap Xep Tang Dan Tung Dong La:\n");
 	xuatMang2C_SoNguyen(a, m, n);
 }
 ////===================================================================================
-int check_ColumnK_Odd(ArrPtr* a, int m, int n, int k)
+int check_ColumnK_Odd(ArrPtr* a, int m, int k)
 {
 	for (int i = 0; i < m; i++)
 	{
@@ -359,7 +359,7 @@ void listed_Column_Odd(ArrPtr* a, int m, int n)
 	int count = 0;
 	for (int j = 0; j < n; j++)
 	{
-		if (check_ColumnK_Odd(a, m, n, j))
+		if (check_ColumnK_Odd(a, m, j))
 		{
 			printf("%5d", j);
 			count++;
@@ -383,7 +383,6 @@ void sort_IncreaseGradually(ItemType*& a, int m)  // Sắp Xếp Mảng Tăng
 			}
 		}
 	}
-
 }
 ////===================================================================================
 void sort_DecreaseGradually(ItemType*& a, int m) // Sắp Xếp Mảng Giảm
@@ -428,7 +427,6 @@ void sort_ZicZac(ArrPtr* a, int m, int n) // Sắp Xếp Ma Trận
 			/*printf("b[%d] = %d\t a[%d][%d] = %d\n",k,b[k],i,j, a[i][j]);*/
 		}
 	}
-	sort_IncreaseGradually(b, k); // Sắp Xếp Mảng b Theo Thứ Tự Tăng Dần Hết Mảng
 	k = 0;
 	for (int i = 0; i < m; i++)
 	{
@@ -448,9 +446,9 @@ void sort_ColumnC(ArrPtr* a, int m, int c)
 	{
 		for (int j = i + 1; j < m; j++) // Hai Vòng For Là Loop Của Array1D
 		{
-			if (a[i][c] < a[i + 1][c])
+			if (a[i][c] < a[j][c])
 			{
-				hoanVi(a[i][c], a[i + 1][c]);
+				hoanVi(a[i][c], a[j][c]);
 			}
 		}
 	}
@@ -462,7 +460,7 @@ void sort_ColumnC_DecreaseGradually(ArrPtr* a, int m, int n, int c)
 	{
 		sort_ColumnC(a, m, c);
 	}
-	printf("Ma Tran Sau Khi Sap Xep Giam Dan Dong C La:\n");
+	printf("Ma Tran Sau Khi Sap Xep Giam Dan Cot C La:\n");
 	xuatMang2C_SoNguyen(a, m, n);
 }
 //===================================================================================
@@ -507,12 +505,12 @@ int Sum_ColumnK(ArrPtr* a, int m, int k)
 	return sum;
 }
 //===================================================================================
-void listed_Column_MinSum(ArrPtr* a, int m, int n) 
+void listed_Column_MinSum(ArrPtr* a, int m, int n)
 {
 	int MinSum = Sum_ColumnK(a, m, 0);
 
 	int kq = 0;
-	for (int j = 1; j < n; j++)
+	for (int j = 1; j < n; j++) // Mục đích Vòng For Thứ Nhất Là Đi Tính Tổng Từng Cột Rồi So Sánh Với TổngMin
 	{
 		kq = Sum_ColumnK(a, m, j);
 
@@ -521,11 +519,11 @@ void listed_Column_MinSum(ArrPtr* a, int m, int n)
 			MinSum = kq;
 		}
 	}
-	for (int j = 0; j < n; j++)
+	for (int j = 0; j < n; j++) // Mục đích Vòng For Thứ Hai Là Xuất Ra Cột Có TổngMin
 	{
 		kq = Sum_ColumnK(a, m, j);
 
-		if (MinSum == kq)
+		if (kq == MinSum)
 		{
 			printf("Cot Co Tong Nho Nhat La Cot Thu %d\n", j);
 		}

@@ -41,11 +41,11 @@ int findMin_ColumnK(ArrPtr* a, int m, int n, int k);
 void listed_Element_YenNgua(ArrPtr* a, int m, int n);
 
 // Sắp Xếp mảng a Tăng Theo Từng Dòng
-void sortIncrease_LineK(ArrPtr* a, int n, int k);
+void sortIncrease_LineK(ArrPtr* a, int k, int n);
 void sortIncrease_EachLine(ArrPtr* a, int m, int n);
 
 // Liệt Kê Các Dòng Chứa Số Lẻ
-int check_ColumnK_Odd(ArrPtr* a, int m, int n, int k);
+int check_ColumnK_Odd(ArrPtr* a, int m, int k);
 void listed_Column_Odd(ArrPtr* a, int m, int n);
 
 // Sắp Xếp ZicZac

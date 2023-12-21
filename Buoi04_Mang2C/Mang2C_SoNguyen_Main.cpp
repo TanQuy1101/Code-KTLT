@@ -27,7 +27,7 @@ void showMenu()
 	printf("\n13. Sap Xep Tang Dan Tung Dong                            *");
 	printf("\n15. Sap Xep Zic Zac (Tang Tu Trai -> Phai, Tren -> Duoi   *");
 	printf("\n16. Sap Xep Ma Tran Dong Chan Tang, Dong Le Giam          *");
-	printf("\n17. Sap Xep Giam Dan Dong K                               *");
+	printf("\n17. Sap Xep Giam Dan Cot C                               *");
 	printf("\n***********************************************************");
 	printf("\n10. Dem Tan Suat Xuat Hien Cua X                          *");
 	printf("\n0. Thoat Chuong Trinh                                     *");
