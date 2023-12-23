@@ -164,7 +164,7 @@ int find_ValueMax(ItemType* a, int n)
 void insert_Last_Array1D(ItemType* a, int& n, int x)
 {
 	int size = sizeof(a) / sizeof(a[0]); // KTra Độ Dài Của Mảng
-	if (n == size) // Giả Sử Mảng Có 10 Vị Trí Mà n = 10 ==> Ko Thể Thêm
+	if (n == size) // Giả Sử Mảng Có 10 Vị Trí Mà n = 11 ==> Ko Thể Thêm
 	{
 		printf("Khong The Them Vao Mang !");
 	}
