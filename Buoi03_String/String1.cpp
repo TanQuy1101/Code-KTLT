@@ -11,7 +11,16 @@ void fixScanf()
 	while ((c = getchar()) != '\n' && c != EOF);
 }
 ////===================================================================================
-
+void deleteEndLine(char s[])
+{
+	size_t len = strlen(s);
+	if (s[len - 1] == '\n')
+	{
+		s[len - 1] = '\0';
+	}
+}
+////===================================================================================
+// 
 // Bài 1. Chữ Đầu Thành Chữ Hoa, Còn Lại Thành Chữ Thường
 void Alter_Character(char* s)
 {
@@ -163,7 +172,7 @@ void find_Name(char* s1, char* s2)
 	int len2 = strlen(s2);
 	for (int i = 0; i < len2; i++)
 	{ // Hàm tolower chuyển đổi ký tự đã cho thành chữ thường.
-		if (tolower(s2[i]) != tolower(s1[count + i])) 
+		if (tolower(s2[i]) != tolower(s1[count + i]))
 		{
 			printf("Ten %s Khong Co Trong Chuoi %s", s2, s1);
 			return;
@@ -217,25 +226,25 @@ void find_Char_MostAppr(char* s) // SAI
 }
 
 // Bài 10. Xóa Chuỗi Kí Tự Trong Chuỗi
-void delete_SmallString2_String1(char* s1, char* s2) 
+void delete_SmallString2_String1(char* s1, char* s2)
 {
 	if (s1 == NULL)
 		return;
-	
+
 	// TH1: Chuỗi s2 Không Tồn Tại Trong s1
 	char* s3 = strstr(s1, s2); // Kiểm Tra s2 Pải Con s1 Không
 	if (!s3) // s3 Trả Về Vị Trí Bắt Đầu Của đoạn giống chuỗi s2 Trong s1 
 	{
-		printf("Chuoi %s Khong Ton Tai Trong Chuoi %s",s2,s1);
+		printf("Chuoi %s Khong Ton Tai Trong Chuoi %s", s2, s1);
 		return;
-	} 
+	}
 	// s3 Là Chuỗi Giống s2 Trong s1 (Tan Quy)
 	// s2 : Tan
 	// s1 : Duong Tan Quy
 	//            ^
 	//            s3
 	// s3 : Tan Quy
-	
+
 	// TH2: Chuỗi s2 Tồn Tại Trong s1
 	int len2 = strlen(s2);
 	int len3 = strlen(s3); // s3 Là Chuỗi Bắt Đầu Từ Vị Trí Giống s2 Trong s1
@@ -263,6 +272,30 @@ void delete_RandSite(char* s, int DelSite)
 	printf("Chuoi Sau Khi Xoa La: %s", s);
 }
 
+// Bài 12. Chèn Chuỗi s2 Vào Chuỗi s1 Tại Vị Trí X
+void insertSubstring(char* s1, char* s2, int x)
+{
+	int len1 = strlen(s1);
+	int len2 = strlen(s2);
+
+	if (len1 + len2 > 50)
+		return;
+	if (x > len1)
+		x = len1; // Chen Tai Vi Tri Cuoi Cung
+
+	if (x < len1)  // s1: Duong Quy / s2: Tan  /  s3: Quy
+	{
+		// s1 + x <=> s1[x]
+		char* s3 = new char[50];
+		strcpy(s3, s1 + x); // s1 + x : Tu Vi Tri 'Q' Den Het Chuoi Se Gan De Len Chuoi s3 ==> s3 : Quy                    
+		strcpy(s1 + x, s2); // s2 : 'Tan' Se Gan De Len Chu 'Quy' Cua Chuoi s1  ==> Duong Tan                                
+		strcpy(s1 + x + len2, s3); // 'Quy' Se Gan De Len Phia Sau Duong Tan _
+	}
+	else
+		strcpy(s1 + x, s2);
+	printf("Chuoi Sau Khi Chen La: %s", s1);
+}
+
 //==============================================================================================
 void showMenu()
 {
@@ -280,6 +313,7 @@ void showMenu()
 	printf("\n9. Tim Kiem Ki Tu Xuat Hien Nhieu Nhat Trong Chuoi        *");
 	printf("\n10. Xoa Chuoi Con Trong Chuoi                             *");
 	printf("\n11. Xoa Tai Vi Tri Bat Ki Trong Chuoi                     *");
+	printf("\n12. Chen Chuoi s2 Vao Chuoi s1 Tai Vi Tri X               *");
 	printf("\n0. Thoat Chuong Trinh                                     *");
 	printf("\n***********************************************************");
 	printf("\n***********************************************************");
@@ -289,8 +323,10 @@ void process()
 {
 	char s[50];
 	char c = 0;
-	char s1[50];
-	char s2[50];
+	char* s1 = new char[50];
+	memset(s1, 0, 50);
+	char* s2 = new char[50];
+	memset(s1, 0, 50);
 	int Site = 0;
 	int luaChon;
 	showMenu();
@@ -335,11 +371,11 @@ void process()
 			break;
 		case 5:
 			printf("\nNhap Noi Dung Cho Chuoi s1: ");
-			gets_s(s1);
+			fgets(s1, sizeof(s1), stdin); deleteEndLine(s1);
 			printf("Noi Dung Cua Chuoi s1 Vua Nhap La: ");
 			puts(s1);
 			printf("\nNhap Noi Dung Cho Chuoi s2: ");
-			gets_s(s2);
+			fgets(s2, sizeof(s2), stdin); deleteEndLine(s2);
 			printf("Noi Dung Cua Chuoi s2 Vua Nhap La: ");
 			puts(s2);
 			printf("\n");
@@ -358,7 +394,7 @@ void process()
 			printf("Ho Va Ten Vua Nhap La: ");
 			puts(s);
 			printf("Hay Nhap Ten Muon Tim Kiem: ");
-			gets_s(s1);
+			fgets(s, sizeof(s), stdin); deleteEndLine(s);
 			find_Name(s, s1);
 			break;
 		case 8:
@@ -382,11 +418,11 @@ void process()
 			break;
 		case 10:
 			printf("Nhap Chuoi s1: ");
-			gets_s(s1);
+			fgets(s1, sizeof(s1), stdin); deleteEndLine(s1);
 			printf("Noi Dung Cua Chuoi s1 Vua Nhap La: ");
 			puts(s1);
 			printf("Nhap Chuoi s2 Muon Xoa Trong Chuoi s1: ");
-			gets_s(s2);
+			fgets(s2, sizeof(s2), stdin); deleteEndLine(s2);
 			delete_SmallString2_String1(s1, s2);
 			break;
 		case 11:
@@ -397,6 +433,19 @@ void process()
 			printf("Nhap Vi Tri Muon Xoa: ");
 			scanf("%d", &Site);
 			delete_RandSite(s, Site);
+			break;
+		case 12:
+			printf("\nNhap Noi Dung Cho Chuoi s1: ");
+			fgets(s1, 50, stdin); fflush(stdin);  deleteEndLine(s1);
+			printf("\nNhap Noi Dung Cho Chuoi s2: ");
+			fgets(s2, 50, stdin); fflush(stdin);  deleteEndLine(s2);
+			printf("Noi Dung Cua Chuoi s1 Vua Nhap La: ");
+			puts(s1);
+			printf("Noi Dung Cua Chuoi s2 Vua Nhap La: ");
+			puts(s2);
+			printf("\nNhap Vi Tri Muon Chen: ");
+			scanf("%d", &Site);
+			insertSubstring(s1, s2, Site);
 			break;
 		}
 	} while (luaChon != 0);
