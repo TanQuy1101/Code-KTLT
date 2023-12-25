@@ -58,11 +58,11 @@ int delete_Site(char* s, int site)     // Xóa Space Tại Vị Trí
 	int n = strlen(s);
 	if (site < 0 || site > n)
 		return 0;
-	for (int i = site; i < n; i++)
+	for (int i = site + 1; i < n; i++)
 	{
-		s[i] = s[i + 1];
+		s[i - 1] = s[i];
 	}
-	s[n - 1] == '\0';
+	s[n - 1] = '\0';
 }
 //==============================================================================================
 void delete_Space(char* s)
